@@ -27,7 +27,6 @@ class BrainDQN:
         self.hidden1 = 64
         self.hidden2 = 64
         self.hidden3 = 128
-
         self.createQNetwork()
 
     def weight_variable(self, shape):
