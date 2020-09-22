@@ -1,8 +1,4 @@
 import numpy as np
-import random
-import math
-import matplotlib
-import matplotlib.pyplot as plt
 
 class ENVIRONMENT:
     def __init__(self,SensorNum,ActionNum,ActionChoice ):

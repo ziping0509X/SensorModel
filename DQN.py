@@ -1,9 +1,7 @@
 import numpy as np
 import  tensorflow as tf
-import  time
 import  random
 from collections import  deque
-
 
 GAMMA = 0.8
 OBSERVE = 300
@@ -92,6 +90,7 @@ class BrainDQN:
         Qvalue_batch = self.Qvalue.eval(feed_dict={self.stateInput:nextState_batch})
 
         print("train Q network......")
+        print("-------------------------")
 
         for i in range(0,BATCH_SIZE):
             Qvalue_T_batch.append(reward_batch[i]+GAMMA * np.max(Qvalue_batch))

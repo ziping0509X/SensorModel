@@ -1,11 +1,9 @@
-import random
 import matplotlib.pyplot as plt
 import math
 import numpy as np
-import DQN
 from DQN import BrainDQN
-import ENV
 from ENV import ENVIRONMENT
+import pandas as pd
 
 SENSOR_NUM = 2
 ACTION_NUM = 9
@@ -44,32 +42,12 @@ while Time < N-1:
         actionIput = Qnetwork.getAction_1(actionNum=ACTION_NUM, stateInput=stateInput,Time= Time)
         reward,actionshow = Env.getReward(stateInput=stateInput, actionInput=actionIput)
         ActionShow.append(actionshow)
-        print("test action show：")
-        print(actionshow)
-        print(ActionShow[Time])
-        print("-----------------------------")
         nextState = Env.creatSensor(Power=sig[Time + 1])
         loss = Qnetwork.getLoss(currentState=stateInput, nextState=nextState, action=actionIput, reward=reward)
         Time = Time + 1
-        # if(Time == 18)
-        #     fig = plt.figure(num=3, figsize=(12, 6))
-        #     ax1 = fig.add_subplot(111)
-        #     ax1.set_xlabel("时间/t")
-        #     ax1.set_ylabel("动作值")
-        #     ax1.set_title("经过训练以后的成果")
-        #     ax1.set_xlim(0, 20)
-        #     ax1.scatter(t1, sig, c='b',label="signal")
-        #     ax1.legend(loc=1)
-        #     lenth = len(ActionShow)
-        #     t3 = np.linspace(0, lenth, num=lenth)
-        #     ax1.scatter(t3, ActionShow, c='y')
-        #
-        #     plt.show()
-        #     print(len(ActionShow))
-        #     lenth = len(ActionShow)
-        #     t3 = np.linspace(0,lenth,num=lenth)
-        #     plt.scatter(t3,ActionShow)
-        #     plt.show()
+        R_total += reward
+        Reward.append(R_total)
+
     else:
 
         #get satate\action\reward\nextstate
@@ -90,6 +68,14 @@ while Time < N-1:
             Loss.append(loss)
 
         Time = Time + 1
+
+Loss1 = np.array(Loss)
+data1 = pd.DataFrame(Loss1,columns=['Loss'])
+data1.to_csv("D:\YuanZihong\SensorModel\Loss.csv")
+
+Reward1 = np.array(Reward)
+data1 = pd.DataFrame(Reward1,columns=['Reward'])
+data1.to_csv("D:\YuanZihong\SensorModel\Reward.csv")
 
 plt.rcParams["font.family"]="SimHei"
 plt.rcParams['axes.unicode_minus']=False
