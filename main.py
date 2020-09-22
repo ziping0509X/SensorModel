@@ -51,7 +51,7 @@ while Time < N-1:
         nextState = Env.creatSensor(Power=sig[Time + 1])
         loss = Qnetwork.getLoss(currentState=stateInput, nextState=nextState, action=actionIput, reward=reward)
         Time = Time + 1
-        # if(Time == 18):
+        # if(Time == 18)
         #     fig = plt.figure(num=3, figsize=(12, 6))
         #     ax1 = fig.add_subplot(111)
         #     ax1.set_xlabel("时间/t")
