@@ -18,6 +18,8 @@
 （5）deep：由于这个模型的环境状态集和动作状态集都比较小，所以深度和神经元节点数可以适当减小一些。
 ## 图片
 ![](https://github.com/ziping0509X/SensorModel/blob/master/Figure_1.png)
+![](https://github.com/ziping0509X/SensorModel/blob/master/Figure_2.png)
+![](https://github.com/ziping0509X/SensorModel/blob/master/Figure_3.png)
 
 
 
